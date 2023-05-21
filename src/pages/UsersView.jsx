@@ -1,6 +1,7 @@
 import { UserForm } from 'components/UserForm/UserForm';
 import { UserList } from 'components/UserList/UserList';
 import { Filter } from 'components/Filter/Filter';
+import { UserEditor } from 'components/UserEditor/UserEditor';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter, setFilter } from 'redux/userlistSlice';
@@ -43,7 +44,13 @@ const UsersView = () => {
   const filteredUsers = getFilteredUsers();
 
   return (
-    <Container className="mt-2">
+    <Container
+      className="mt-2"
+      style={{
+        position: 'relative',
+      }}
+    >
+      <UserEditor></UserEditor>
       {!isLoading && isSuccess && (
         <CardGroup>
           <Card>

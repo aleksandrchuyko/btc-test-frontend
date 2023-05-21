@@ -24,11 +24,14 @@ export const UserList = ({ users, onDeleteUser }) => {
 UserList.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.exact({
-      createdAt: PropTypes.string,
       _id: PropTypes.string,
       name: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
       password: PropTypes.string.isRequired,
+      owner: PropTypes.exact({
+        _id: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+      }),
     })
   ).isRequired,
 };

@@ -88,9 +88,14 @@ export const UserForm = ({ users, onSubmit }) => {
 UserForm.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.exact({
+      _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
       password: PropTypes.string.isRequired,
+      owner: PropTypes.exact({
+        _id: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+      }),
     })
   ).isRequired,
 };
