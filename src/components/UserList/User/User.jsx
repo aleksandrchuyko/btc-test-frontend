@@ -7,8 +7,10 @@ export const User = ({ id, name, email, password, onDeleteUser }) => {
   return (
     <div>
       <p className="mb-2">
-        <b>Name:</b> {name}<br />
-        <b>Email:</b> {email}<br />
+        <b>Name:</b> {name}
+        <br />
+        <b>Email:</b> {email}
+        <br />
         <b>Password:</b> {password}
       </p>
       <Button
