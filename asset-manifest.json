@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/btc-test-frontend/static/css/main.f002493c.css",
-    "main.js": "/btc-test-frontend/static/js/main.88804bfd.js",
+    "main.js": "/btc-test-frontend/static/js/main.b0a29a6b.js",
     "static/js/31.308c286f.chunk.js": "/btc-test-frontend/static/js/31.308c286f.chunk.js",
     "static/js/205.104dbc82.chunk.js": "/btc-test-frontend/static/js/205.104dbc82.chunk.js",
     "static/js/840.aab1ba91.chunk.js": "/btc-test-frontend/static/js/840.aab1ba91.chunk.js",
     "static/js/855.4dd541d9.chunk.js": "/btc-test-frontend/static/js/855.4dd541d9.chunk.js",
     "index.html": "/btc-test-frontend/index.html",
     "main.f002493c.css.map": "/btc-test-frontend/static/css/main.f002493c.css.map",
-    "main.88804bfd.js.map": "/btc-test-frontend/static/js/main.88804bfd.js.map",
+    "main.b0a29a6b.js.map": "/btc-test-frontend/static/js/main.b0a29a6b.js.map",
     "31.308c286f.chunk.js.map": "/btc-test-frontend/static/js/31.308c286f.chunk.js.map",
     "205.104dbc82.chunk.js.map": "/btc-test-frontend/static/js/205.104dbc82.chunk.js.map",
     "840.aab1ba91.chunk.js.map": "/btc-test-frontend/static/js/840.aab1ba91.chunk.js.map",
@@ -16,6 +16,6 @@
   },
   "entrypoints": [
     "static/css/main.f002493c.css",
-    "static/js/main.88804bfd.js"
+    "static/js/main.b0a29a6b.js"
   ]
 }
