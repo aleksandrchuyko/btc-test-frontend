@@ -25,9 +25,10 @@ UserList.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.exact({
       createdAt: PropTypes.string,
-      id: PropTypes.string,
+      _id: PropTypes.string,
       name: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
