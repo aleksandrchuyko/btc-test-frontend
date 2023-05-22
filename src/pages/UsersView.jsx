@@ -8,7 +8,11 @@ import { UserEditor } from 'components/UserEditor/UserEditor';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter, setFilter } from 'redux/userlistSlice';
 
-import { useAddUserMutation, useGetAllUsersQuery } from 'redux/users/users-api';
+import {
+  useAddUserMutation,
+  useGetAllUsersQuery,
+  useUpdateUserMutation,
+} from 'redux/users/users-api';
 import { Card, CardGroup, Container } from 'react-bootstrap';
 
 import { useToggle } from 'hooks/useToggle';
@@ -16,7 +20,7 @@ import { useToggle } from 'hooks/useToggle';
 const UsersView = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
-  const { isOpen, open, close, toggle } = useToggle();
+  const { isOpen, open, close } = useToggle();
 
   const filter = useSelector(getFilter);
   const {
@@ -26,7 +30,9 @@ const UsersView = () => {
   } = useGetAllUsersQuery('', {
     refetchOnMountOrArgChange: true,
   });
+
   const [addUser] = useAddUserMutation();
+  const [updateUser] = useUpdateUserMutation();
 
   //get users list by filter
   const getFilteredUsers = () => {
@@ -37,7 +43,7 @@ const UsersView = () => {
     } else return users;
   };
 
-  const getUserById = (id) => {
+  const getUserById = id => {
     setUser(users.find(user => user._id === id));
   };
 
@@ -46,8 +52,8 @@ const UsersView = () => {
     addUser({ name, email, password });
   };
 
-  const handleUpdateUser = ({id, name, email, password }) => {
-    console.log({ id, name, email, password });
+  const handleUpdateUser = ({ id, name, email, password }) => {
+    updateUser({ userId: id, name, email, password });
   };
 
   const updateFilter = e => {
@@ -64,7 +70,14 @@ const UsersView = () => {
         position: 'relative',
       }}
     >
-      {isOpen && <UserEditor users={users} user={user} close={close} onSubmit={handleUpdateUser}/>}
+      {isOpen && (
+        <UserEditor
+          users={users}
+          user={user}
+          close={close}
+          onSubmit={handleUpdateUser}
+        />
+      )}
 
       {!isLoading && isSuccess && (
         <CardGroup>
@@ -78,7 +91,11 @@ const UsersView = () => {
             <Card.Body>
               <Card.Title>Your users</Card.Title>
               <Filter name={filter} onChange={updateFilter}></Filter>
-              <UserList users={filteredUsers} open={open} getUserById={getUserById} />
+              <UserList
+                users={filteredUsers}
+                open={open}
+                getUserById={getUserById}
+              />
             </Card.Body>
           </Card>
         </CardGroup>

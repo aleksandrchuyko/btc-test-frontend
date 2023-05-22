@@ -27,8 +27,8 @@ export const UserEditor = ({ users, user, onSubmit, close }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    if (users.find(user => user.email === email)) {
+    const id = user._id;
+    if (users.find(user => user.email === email && user._id !== id)) {
       window.alert(`${email} is already in users!`);
       return false;
     }
@@ -50,7 +50,7 @@ export const UserEditor = ({ users, user, onSubmit, close }) => {
         backgroundColor: '#fff',
       }}
     >
-      <Card>
+      <Card style={{ padding: '20px' }}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-2" controlId="formBasicName">
             <Form.Label>User name</Form.Label>
