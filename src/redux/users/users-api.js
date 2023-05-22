@@ -31,6 +31,10 @@ export const usersApi = createApi({
         query: () => ({ url: 'users', method: 'get' }),
         providesTags: ['Users'],
       }),
+      getById: build.query({
+        query: (userId) => ({ url: `users/${userId}`, method: 'get' }),
+        providesTags: ['Users'],
+      }),
       addUser: build.mutation({
         query: ({ name, email, password }) => ({
           url: 'users',
@@ -50,12 +54,26 @@ export const usersApi = createApi({
         }),
         invalidatesTags: ['Users'],
       }),
+      updateUser: build.mutation({
+        query: ({ userId, name, email, password }) => ({
+          url: `users/${userId}`,
+          method: 'put',
+          data: {
+            name,
+            email,
+            password,
+          },
+        }),
+        invalidatesTags: ['Users'],
+      }),
     };
   },
 });
 
 export const {
   useGetAllUsersQuery,
+  useGetByIdQuery,
   useAddUserMutation,
   useRemoveUserMutation,
+  useUpdateUserMutation,
 } = usersApi;

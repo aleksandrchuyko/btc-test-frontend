@@ -2,7 +2,7 @@ import { User } from 'components/UserList/User/User';
 import PropTypes from 'prop-types';
 import { Container, ListGroup } from 'react-bootstrap';
 
-export const UserList = ({ users, onDeleteUser }) => {
+export const UserList = ({ users, open, getUserById }) => {
   return (
     <Container>
       <ListGroup variant="flush">
@@ -13,6 +13,8 @@ export const UserList = ({ users, onDeleteUser }) => {
               name={user.name}
               email={user.email}
               password={user.password}
+              open={open}
+              getUserById={getUserById}
             ></User>
           </ListGroup.Item>
         ))}
