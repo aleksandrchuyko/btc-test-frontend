@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+
 import { BASE_URL } from 'constants';
 
 axios.defaults.baseURL = BASE_URL;
@@ -21,6 +23,9 @@ const register = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
+      toast.warning(error.response.data?.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       return thunkAPI.rejectWithValue();
     }
   }
@@ -32,6 +37,9 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     token.set(data.token);
     return data;
   } catch (error) {
+    toast.warning(error.response.data?.message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
     return thunkAPI.rejectWithValue();
   }
 });
@@ -41,6 +49,9 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.get('auth/logout');
     token.unset();
   } catch (error) {
+    toast.warning(error.response.data?.message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
     return thunkAPI.rejectWithValue();
   }
 });
