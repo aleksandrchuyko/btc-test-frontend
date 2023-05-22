@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRemoveUserMutation } from 'redux/users/users-api';
 
-export const User = ({ id, name, email, password, onDeleteUser }) => {
+export const User = ({ id, name, email, password, open, getUserById }) => {
   const [removeUser, { isLoading: isDeleting }] = useRemoveUserMutation();
   return (
     <div>
@@ -13,6 +13,17 @@ export const User = ({ id, name, email, password, onDeleteUser }) => {
         <br />
         <b>Password:</b> {password}
       </p>
+      <Button
+        variant="outline-secondary"
+        size="sm"
+        type="button"
+        onClick={() => {
+          getUserById(id);
+          open();
+        }}
+      >
+        Edit
+      </Button>
       <Button
         variant="outline-secondary"
         size="sm"
