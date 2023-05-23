@@ -32,6 +32,7 @@ const UsersView = () => {
   });
 
   const [addUser] = useAddUserMutation();
+
   const [updateUser] = useUpdateUserMutation();
 
   //get users list by filter
