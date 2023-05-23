@@ -81,6 +81,7 @@ export const UserEditor = ({ users, user, onSubmit, close }) => {
             <Form.Control
               type="text"
               name="password"
+              minLength="8"
               value={password}
               onChange={handleChange}
               required

@@ -17,8 +17,6 @@ import { Card, CardGroup, Container } from 'react-bootstrap';
 
 import { useToggle } from 'hooks/useToggle';
 
-import { showRequestErr } from 'utils/showRequestErr';
-
 const UsersView = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
@@ -33,23 +31,9 @@ const UsersView = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  const [
-    addUser,
-    { data: newUser, error: newUserError, isLoading: newUserLoading },
-  ] = useAddUserMutation();
+  const [addUser] = useAddUserMutation();
 
-  if (newUserError) {
-    showRequestErr(newUserError);
-  }
-
-  const [
-    updateUser,
-    { data: updUser, error: updUserError, isLoading: updUserLoading },
-  ] = useUpdateUserMutation();
-
-  if (updUserError) {
-    showRequestErr(updUserError);
-  }
+  const [updateUser] = useUpdateUserMutation();
 
   //get users list by filter
   const getFilteredUsers = () => {
