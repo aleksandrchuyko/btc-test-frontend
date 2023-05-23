@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import { Form, Button } from 'react-bootstrap';
 import { Box } from 'components/Box';
 
@@ -29,7 +30,9 @@ export const UserForm = ({ users, onSubmit }) => {
     e.preventDefault();
 
     if (users.find(user => user.email === email)) {
-      window.alert(`${email} is already in users!`);
+      toast.warning(`${email} is already in users!`, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       return false;
     }
 

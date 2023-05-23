@@ -1,6 +1,7 @@
 // import { Box } from 'components/Box';
 import { useState } from 'react';
 
+import { toast } from 'react-toastify';
 import { Card, CardGroup, Button, Form } from 'react-bootstrap';
 
 export const UserEditor = ({ users, user, onSubmit, close }) => {
@@ -29,7 +30,9 @@ export const UserEditor = ({ users, user, onSubmit, close }) => {
     e.preventDefault();
     const id = user._id;
     if (users.find(user => user.email === email && user._id !== id)) {
-      window.alert(`${email} is already in users!`);
+      toast.warning(`${email} is already in users!`, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       return false;
     }
 
